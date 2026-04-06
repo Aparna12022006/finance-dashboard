@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.vite
+build.log
+git_ls.json
+git_status.txt
+git-files.txt
