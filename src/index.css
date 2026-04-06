@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Dark mode (default) CSS variables ─── */
+:root {
+    --c-bg:      #0a0a0f;
+    --c-surface: #111118;
+    --c-card:    #16161f;
+    --c-border:  #1e1e2e;
+    --c-subtle:  #2a2a3e;
+    --c-text:    #e8e8f0;
+    --c-muted:   #8888aa;
+    --c-dim:     #4a4a6a;
+    --c-accent:  #7c6af7;
+    --c-green:   #10b981;
+    --c-red:     #f43f5e;
+    --c-amber:   #f59e0b;
+}
+
+/* ─── Light mode overrides ─── */
+.light {
+    --c-bg:      #f0f2f8;
+    --c-surface: #ffffff;
+    --c-card:    #f8f9fc;
+    --c-border:  #e2e8f0;
+    --c-subtle:  #dde3ee;
+    --c-text:    #1a1a2e;
+    --c-muted:   #5a6080;
+    --c-dim:     #8896b0;
+    --c-accent:  #6c5ce7;
+    --c-green:   #059669;
+    --c-red:     #e11d48;
+    --c-amber:   #d97706;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--c-surface); }
+::-webkit-scrollbar-thumb { background: var(--c-subtle); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-accent); }
+
+/* ─── Reusable utility classes (theme-aware) ─── */
+.theme-bg      { background-color: var(--c-bg); }
+.theme-surface { background-color: var(--c-surface); border-color: var(--c-border); }
+.theme-card    { background-color: var(--c-card); border-color: var(--c-border); }
+.theme-text    { color: var(--c-text); }
+.theme-muted   { color: var(--c-muted); }
+.theme-border  { border-color: var(--c-border); }
+
+/* ─── Glow effects ─── */
+.card-glow {
+    box-shadow: 0 0 0 1px var(--c-border), 0 4px 32px rgba(124, 106, 247, 0.04);
+    transition: box-shadow 0.3s ease;
+}
+.card-glow:hover {
+    box-shadow: 0 0 0 1px rgba(124, 106, 247, 0.4), 0 8px 40px rgba(124, 106, 247, 0.12);
+}
+.accent-glow { box-shadow: 0 0 20px rgba(124, 106, 247, 0.35); }
+
+/* ─── Sidebar nav link ─── */
+.sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer;
+    color: var(--c-muted);
+}
+.sidebar-link:hover {
+    color: var(--c-text);
+    background-color: var(--c-border);
+}
+.sidebar-link.active {
+    background-color: rgba(124, 106, 247, 0.1);
+    color: var(--c-accent);
+    border: 1px solid rgba(124, 106, 247, 0.2);
+}
+
+/* ─── Stat badge ─── */
+.stat-badge {
+    @apply inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full;
+}
+
+/* ─── Shimmer loading ─── */
+.shimmer-bg {
+    background: linear-gradient(90deg, var(--c-card) 25%, var(--c-border) 50%, var(--c-card) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+}
+
+/* ─── Modal overlay transition ─── */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+/* ─── Animation delays ─── */
+@layer utilities {
+    .animation-delay-100 { animation-delay: 100ms; }
+    .animation-delay-200 { animation-delay: 200ms; }
+    .animation-delay-300 { animation-delay: 300ms; }
+    .animation-delay-400 { animation-delay: 400ms; }
+    .animation-delay-500 { animation-delay: 500ms; }
+}
